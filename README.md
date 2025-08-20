@@ -214,6 +214,14 @@ Some games use different ports for queries:
 - Built-in fallback queries
 - Discord server support
 
+## ❓ FAQ
+
+- **How do I display the server list on my website?**  
+  Add the shortcode: `[monr_list]`.
+
+- **How can I make the server list display full-width (wide screen)?**  
+  Use a responsive theme or place the shortcode inside text that is not restricted by a container.
+
 ## 📄 License
 
 This project is licensed under the GPL v2 License - see the [LICENSE](LICENSE) file for details.
