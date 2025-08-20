@@ -43,6 +43,12 @@ Display specific game type:
 [monr_list type="minecraft" theme="dark"]
 ```
 
+## 🌐 Live Demo
+[https://yamiru.com/monr](https://yamiru.com/monr)
+
+## 🖼️ Preview Screenshot
+![FAQ Screenshot](https://i.imgur.com/4BWCYcc.png)
+
 ## 🎮 Supported Games
 
 <details>
