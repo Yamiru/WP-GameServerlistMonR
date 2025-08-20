@@ -1,0 +1,507 @@
+/**
+ * GameServerlistMonR
+ * Version: 1.0.0
+ * Powered by GameServerlistMonR - A project by Yamiru (yamiru.com)
+ */
+
+/*
+|--------------------------------------------------------------------------
+| Base Styles - Ultra Clean
+|--------------------------------------------------------------------------
+
+*/
+
+
+.gslm-theme-modern .gslm-server-name { font-size: 14px; }
+.gslm-theme-dark .gslm-server-name { font-size: 13px; }
+.gslm-theme-light .gslm-server-name { font-size: 13px; }
+.gslm-theme-glass .gslm-server-name { font-size: 14px; }
+.gslm-theme-neon .gslm-server-name { font-size: 13px; }
+
+
+.gslm-servers-container {
+    margin: 20px 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.gslm-servers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Single Line Server Row */
+.gslm-server-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 56px;
+    padding: 14px 18px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gslm-server-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gslm-server-row:hover::before {
+    opacity: 1;
+}
+
+/* Icon */
+.gslm-server-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.gslm-server-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.gslm-server-icon.no-icon {
+    display: none;
+}
+
+/* Status Indicator */
+.gslm-status-indicator {
+    position: relative;
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.gslm-status-indicator[data-status="online"] {
+    background: #10b981;
+    animation: pulse-green 2s infinite;
+}
+
+.gslm-status-indicator[data-status="offline"] {
+    background: #ef4444;
+    opacity: 0.6;
+}
+
+.gslm-status-indicator[data-status="checking"] {
+    background: #f59e0b;
+    animation: pulse-yellow 1.5s infinite;
+}
+
+/* Server Info */
+.gslm-server-name {
+    flex: 0 1 280px;
+    min-width: 120px;
+    max-width: 280px;
+    margin: 0;
+    overflow: hidden;
+    font-size: 13px;   /* men ie, jednotn  */
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.gslm-server-address {
+    flex: 0 0 auto;
+    padding: 3px 8px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.85;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.gslm-server-address:hover {
+    transform: translateX(2px);
+    opacity: 1;
+}
+
+.gslm-server-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;      /* umo n  spr vne skracovanie */
+}
+
+.gslm-info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.gslm-info-label {
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.gslm-info-value {
+    font-weight: 600;
+}
+
+.gslm-players {
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 16px;
+}
+
+/* Connect Button */
+.gslm-connect-btn {
+    flex: 0 0 auto;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    transition: all 0.2s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Theme: Modern Vibrant
+|--------------------------------------------------------------------------
+*/
+
+.gslm-theme-modern .gslm-server-row {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    border: 1px solid #e0f2fe;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.gslm-theme-modern .gslm-server-row:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-color: #7dd3fc;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
+.gslm-theme-modern .gslm-server-row::before {
+    background: linear-gradient(180deg, #0ea5e9, #0284c7);
+}
+
+.gslm-theme-modern .gslm-server-name { color: #0c4a6e; }
+.gslm-theme-modern .gslm-server-address { color: #0369a1; background: #f0f9ff; }
+.gslm-theme-modern .gslm-server-address:hover { color: #075985; background: #e0f2fe; }
+.gslm-theme-modern .gslm-info-item { color: #0e7490; }
+.gslm-theme-modern .gslm-players { color: #1e40af; background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+
+.gslm-theme-modern .gslm-connect-btn {
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border: none;
+}
+
+.gslm-theme-modern .gslm-connect-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Theme: Dark Aurora
+|--------------------------------------------------------------------------
+*/
+
+.gslm-theme-dark {
+    padding: 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.gslm-theme-dark .gslm-server-row {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.gslm-theme-dark .gslm-server-row:hover {
+    transform: translateX(4px);
+    background: linear-gradient(135deg, rgba(51, 65, 85, 0.9), rgba(71, 85, 105, 0.9));
+    border-color: rgba(125, 211, 252, 0.3);
+}
+
+.gslm-theme-dark .gslm-server-row::before {
+    background: linear-gradient(180deg, #38bdf8, #0284c7);
+}
+
+.gslm-theme-dark .gslm-server-name { color: #f0f9ff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+.gslm-theme-dark .gslm-server-address { color: #7dd3fc; background: rgba(14, 165, 233, 0.1); }
+.gslm-theme-dark .gslm-server-address:hover { color: #bae6fd; background: rgba(14, 165, 233, 0.2); }
+.gslm-theme-dark .gslm-info-item { color: #94a3b8; }
+.gslm-theme-dark .gslm-players { color: #4ade80; background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.3); }
+
+.gslm-theme-dark .gslm-connect-btn {
+    color: white;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    border: none;
+}
+
+
+.gslm-theme-dark .gslm-connect-btn:hover {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Theme: Light Pastel
+|--------------------------------------------------------------------------
+*/
+
+.gslm-theme-light .gslm-server-row {
+    background: linear-gradient(135deg, #fefce8, #fef3c7);
+    border: 1px solid #fde68a;
+}
+
+.gslm-theme-light .gslm-server-row:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-color: #fbbf24;
+}
+
+.gslm-theme-light .gslm-server-row::before {
+    background: linear-gradient(180deg, #f59e0b, #d97706);
+}
+
+.gslm-theme-light .gslm-server-name { color: #78350f; }
+.gslm-theme-light .gslm-server-address { color: #92400e; background: rgba(251, 191, 36, 0.1); }
+.gslm-theme-light .gslm-server-address:hover { color: #78350f; background: rgba(251, 191, 36, 0.2); }
+.gslm-theme-light .gslm-info-item { color: #92400e; }
+.gslm-theme-light .gslm-players { color: #14532d; background: linear-gradient(135deg, #bbf7d0, #86efac); font-weight: 700; }
+
+.gslm-theme-light .gslm-connect-btn {
+    color: white;
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    border: none;
+}
+
+.gslm-theme-light .gslm-connect-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Theme: Glass Crystal
+|--------------------------------------------------------------------------
+*/
+
+.gslm-theme-glass {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(20px);
+}
+
+.gslm-theme-glass .gslm-server-row {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+.gslm-theme-glass .gslm-server-row:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.gslm-theme-glass .gslm-server-row::before {
+    background: linear-gradient(180deg, #8b5cf6, #7c3aed);
+}
+
+.gslm-theme-glass .gslm-server-name { color: #4c1d95; font-weight: 700; }
+.gslm-theme-glass .gslm-server-address { color: #6d28d9; background: rgba(139, 92, 246, 0.1); }
+.gslm-theme-glass .gslm-server-address:hover { color: #5b21b6; background: rgba(139, 92, 246, 0.2); }
+.gslm-theme-glass .gslm-info-item { color: #7c3aed; }
+.gslm-theme-glass .gslm-players { color: #4c1d95; background: rgba(167, 139, 250, 0.3); border: 1px solid rgba(139, 92, 246, 0.4); }
+
+.gslm-theme-glass .gslm-connect-btn {
+    color: white;
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    border: none;
+}
+
+.gslm-theme-glass .gslm-connect-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Theme: Neon Glow
+|--------------------------------------------------------------------------
+*/
+
+.gslm-theme-neon {
+    position: relative;
+    padding: 20px;
+    background: #0a0a0a;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.gslm-theme-neon .gslm-server-row {
+    position: relative;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.gslm-theme-neon .gslm-server-row:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.gslm-theme-neon .gslm-server-row::before {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.gslm-theme-neon .gslm-server-name { color: #00ffff; text-shadow: 0 0 8px rgba(0, 255, 255, 0.8); }
+.gslm-theme-neon .gslm-server-address { color: #ff00ff; background: rgba(255, 0, 255, 0.1); text-shadow: 0 0 5px rgba(255, 0, 255, 0.5); }
+.gslm-theme-neon .gslm-server-address:hover { background: rgba(255, 0, 255, 0.2); box-shadow: 0 0 10px rgba(255, 0, 255, 0.4); }
+.gslm-theme-neon .gslm-info-item { color: #fff; }
+.gslm-theme-neon .gslm-players { color: #00ff00; background: rgba(0, 255, 0, 0.1); border: 1px solid rgba(0, 255, 0, 0.3); text-shadow: 0 0 8px rgba(0, 255, 0, 0.8); }
+
+.gslm-theme-neon .gslm-connect-btn {
+    color: #00ffff;
+    background: transparent;
+    border: 1px solid #00ffff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+}
+
+.gslm-theme-neon .gslm-connect-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Animations
+|--------------------------------------------------------------------------
+*/
+
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+@keyframes pulse-yellow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Responsive Design
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 768px) {
+    .gslm-server-row {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .gslm-server-name {
+        flex: 1;
+        min-width: auto;
+        font-size: 14px;
+    }
+
+    .gslm-server-info {
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .gslm-server-address { font-size: 11px; }
+    .gslm-info-item { font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+    .gslm-server-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .gslm-players,
+    .gslm-connect-btn {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Utilities
+|--------------------------------------------------------------------------
+*/
+
+.gslm-hidden {
+    display: none !important;
+}
+
+.gslm-loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.gslm-hide-offline .gslm-server-row[data-status="offline"] {
+    display: none;
+}
+
+/* Discord special */
+.gslm-server-row.server-type-discord .gslm-server-address {
+    color: #5865F2;
+}
+
+/* Powered by */
+.gslm-powered {
+    padding-top: 15px;
+    margin-top: 20px;
+    font-size: 11px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 0.7;
+}
+
+.gslm-powered a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.gslm-powered a:hover {
+    text-decoration: underline;
+}
