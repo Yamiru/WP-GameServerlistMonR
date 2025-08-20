@@ -222,6 +222,9 @@ Some games use different ports for queries:
 - **How can I make the server list display full-width (wide screen)?**  
   Use a responsive theme or place the shortcode inside text that is not restricted by a container.
 
+- **What should I do if the server does not appear or shows the wrong status?**  
+  Clear the cache in the WordPress admin panel or wait a moment for it to refresh.
+  
 ## 📄 License
 
 This project is licensed under the GPL v2 License - see the [LICENSE](LICENSE) file for details.
