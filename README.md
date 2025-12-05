@@ -44,7 +44,7 @@ Display specific game type:
 ```
 
 ## 🌐 Live Demo
-[https://yamiru.com/monr](https://yamiru.com/monr)
+[https://yamiru.com/wp-plugin-gameserverlistmonr](https://www.yamiru.com/wp-plugin-gameserverlistmonr/)
 
 ## 🖼️ Preview Screenshot
 ![FAQ Screenshot](https://i.imgur.com/4BWCYcc.png)
